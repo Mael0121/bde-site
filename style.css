@@ -1,23 +1,79 @@
 body {
   font-family: Arial, sans-serif;
+  background: #f4f4f4;
   margin: 0;
-  background: #f4f6f9;
+  padding: 0;
 }
 
 header {
-  background: #0073e6;
+  background: #222;
   color: white;
   padding: 1rem;
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
 }
 
-header a {
+#articles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  
+  /* Padding pour laisser de la marge sur les bords */
+  padding-left: 2rem;
+  padding-right: 2rem;
+  
+  /* Hauteur naturelle des cartes */
+  align-items: start;
+  grid-auto-rows: auto;
+}
+
+/* Pour les écrans très larges, augmenter encore la marge */
+@media (min-width: 1200px) {
+  #articles-container {
+    padding: 4rem;
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+
+  /* transition pour l'animation au survol */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);               /* léger déplacement vers le haut */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);  /* ombre plus prononcée */
+}
+
+.card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #007BFF;
   color: white;
-  margin-left: 15px;
   text-decoration: none;
+  border-radius: 5px;
 }
 
-#posts {
-  padding: 2rem;
+.card a:hover {
+  background: #0056b3;
 }

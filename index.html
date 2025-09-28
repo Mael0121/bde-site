@@ -3,23 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BDE Lycée - Accueil</title>
+  <title>Liste des articles</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>BDE Lycée</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="admin/">Administration</a>
-    </nav>
+    <h1>Mon site d’articles</h1>
   </header>
 
-  <main id="posts">
-    <h2>Articles récents</h2>
-    <!-- Les articles ajoutés via Netlify CMS s’afficheront ici -->
+  <main id="articles-container">
+    <p>Chargement des articles...</p>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    async function chargerArticles() {
+      try {
+        // Charger la liste des chemins d'articles
+        const res = await fetch("liste_article.json");
+        const data = await res.json();
+
+        const container = document.getElementById("articles-container");
+        container.innerHTML = ""; // Nettoyer le "chargement..."
+
+        if (!data.articles || data.articles.length === 0) {
+          container.innerHTML = "<p>Aucun article disponible</p>";
+          return;
+        }
+
+        // Charger chaque fichier article.json
+        for (const chemin of data.articles) {
+          try {
+            const resArticle = await fetch(chemin);
+            const article = await resArticle.json();
+
+            // Créer la carte
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            if (article.image) {
+              const img = document.createElement("img");
+              img.src = article.image;
+              img.alt = article.titre;
+              card.appendChild(img);
+            }
+
+            const title = document.createElement("h2");
+            title.textContent = article.titre;
+            card.appendChild(title);
+
+            const text = document.createElement("p");
+            text.textContent = article.texte;
+            card.appendChild(text);
+
+            const link = document.createElement("a");
+            link.href = article.lien;
+            link.textContent = "Lire la suite";
+            card.appendChild(link);
+
+            container.appendChild(card);
+          } catch (err) {
+            console.error("Erreur chargement article:", chemin, err);
+          }
+        }
+      } catch (err) {
+        document.getElementById("articles-container").innerHTML =
+          "<p>Impossible de charger les articles</p>";
+        console.error(err);
+      }
+    }
+
+    chargerArticles();
+  </script>
 </body>
 </html>
