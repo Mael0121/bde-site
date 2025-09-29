@@ -40,8 +40,9 @@
     .fof__animation svg {
       display: block;
       margin: 0 auto;
-      height: auto;
-      max-width: 520px; /* par défaut sur PC */
+      width: 100%;        /* occupe toute la largeur */
+      height: auto;       /* garde les proportions */
+      max-width: none;    /* enlève la limite 520px */
     }
 
     /* Animations */
@@ -56,19 +57,19 @@
       50% { transform: scale(0.8); }
     }
 
-    /* Responsive */
+    /* Sur mobile : plus grand en hauteur */
     @media (max-width: 768px) {
-      body { font-size: 1rem; }
-      h1 { font-size: 2rem; }
-      .fof { padding: 2rem 0; }
-      .fof__animation svg { max-width: 90%; } /* occupe presque tout l’écran */
+      .fof__animation svg {
+        width: 100%;
+        height: 60vh;   /* prend 60% de la hauteur de l’écran */
+      }
     }
 
     @media (max-width: 480px) {
-      body { font-size: 1rem; }
-      h1 { font-size: 1.8rem; }
-      .fof { padding: 1.5rem 0; }
-      .fof__animation svg { max-width: 100%; } /* prend 100% de la largeur dispo */
+      .fof__animation svg {
+        width: 100%;
+        height: 70vh;   /* encore plus grand sur très petit écran */
+      }
     }
   </style>
 </head>
