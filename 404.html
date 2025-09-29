@@ -5,9 +5,19 @@
   <title>Page introuvable</title>
   <style>
     /* Reset */
-    *, *::after, *::before { box-sizing: border-box; }
-    * { font: inherit; margin: 0; padding: 0; border: 0; }
-    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    *, *::after, *::before {
+      box-sizing: border-box;
+    }
+    * {
+      font: inherit;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
     body {
       background-color: hsl(0, 0%, 100%);
@@ -15,7 +25,6 @@
       color: hsl(230, 7%, 23%);
       font-size: 1.125rem;
       line-height: 1.4;
-      padding: 1rem;
     }
 
     h1, h2, h3, h4 {
@@ -28,49 +37,41 @@
     h3 { font-size: 1.75rem; }
     h4 { font-size: 1.375rem; }
 
+    ol, ul, menu { list-style: none; }
+    button, input, textarea, select {
+      background-color: transparent;
+      border-radius: 0;
+      color: inherit;
+      line-height: inherit;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    textarea { resize: vertical; overflow: auto; vertical-align: top; }
     a { color: hsl(250, 84%, 54%); text-decoration: none; }
     img, video, svg { display: block; max-width: 100%; }
 
     /* Component */
     .fof { padding: 4.5rem 0; }
-    .fof__container { width: 100%; max-width: 48rem; margin: 0 auto; padding: 0 1rem; }
-    .fof__text { text-align: center; margin-bottom: 2rem; }
-    .fof__text > *:not(:last-child) { margin-bottom: 1rem; }
+    .fof__container { width: calc(100% - 3rem); max-width: 48rem; margin-left: auto; margin-right: auto; }
+    .fof__text { text-align: center; margin-bottom: 3rem; }
+    .fof__text > *:not(:last-child) { margin-bottom: 1.5rem; }
+    .fof__animation svg { display: block; max-width: 520px; margin-left: auto; margin-right: auto; }
 
-    .fof__animation svg {
-      display: block;
-      margin: 0 auto;
-      width: 100%;        /* occupe toute la largeur */
-      height: auto;       /* garde les proportions */
-      max-width: none;    /* enlève la limite 520px */
-    }
-
-    /* Animations */
     #i-fof-browser { transform-origin: 260px 304px; animation: i-fof-browser 4s infinite; }
     #i-fof-shadow { transform-origin: 282px 410px; animation: i-fof-shadow 4s infinite; }
+
     @keyframes i-fof-browser {
       0%, 100% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-10%) scale(0.9); }
     }
+
     @keyframes i-fof-shadow {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(0.8); }
     }
 
-    /* Sur mobile : plus grand en hauteur */
-    @media (max-width: 768px) {
-      .fof__animation svg {
-        width: 100%;
-        height: 60vh;   /* prend 60% de la hauteur de l’écran */
-      }
-    }
-
-    @media (max-width: 480px) {
-      .fof__animation svg {
-        width: 100%;
-        height: 70vh;   /* encore plus grand sur très petit écran */
-      }
-    }
+    .cd-container { width: calc(100% - 3rem); margin-left: auto; margin-right: auto; }
+    .cd-max-width-sm { max-width: 48rem; }
   </style>
 </head>
 <body>
