@@ -57,7 +57,8 @@ header nav a:hover {
   flex: 1 1 300px;
 }
 
-.presentation h1 {
+.presentation h1,
+.presentation h2 {
   font-size: 2.2rem;
   margin-bottom: 1rem;
   color: rgb(57, 156, 107);
@@ -90,17 +91,11 @@ header nav a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
-  margin: 2rem 0;
-  
-  /* marges latérales pour respirer */
+  margin: 2rem auto;          /* centrage horizontal */
   padding-left: 2rem;
   padding-right: 2rem;
-}
-
-@media (min-width: 1200px) {
-  .articles-container {
-    padding: 0 4rem;
-  }
+  max-width: 1200px;          /* largeur maximale pour éviter l’étirement */
+  justify-content: center;     /* centre les colonnes si peu nombreuses */
 }
 
 /* CARDS */
@@ -113,7 +108,6 @@ header nav a:hover {
   text-align: center;
   display: flex;
   flex-direction: column;
-  max-height: 450px; /* Hauteur max de la carte */
 }
 
 .card:hover {
@@ -123,28 +117,20 @@ header nav a:hover {
 
 .card img {
   width: 100%;
-  height: 180px;         /* Hauteur fixe pour uniformiser */
-  object-fit: cover;     /* Recadrage automatique sans déformer */
-  border-radius: 12px 12px 0 0;
-  flex-shrink: 0;
+  height: 180px;            /* hauteur fixe pour toutes les cartes */
+  object-fit: cover;        /* adapte l’image à la carte sans déformer */
 }
 
 .card h3 {
   margin: 1rem;
   font-size: 1.2rem;
   color: rgb(57, 57, 156);
-  flex-shrink: 0;
 }
 
 .card p {
   margin: 0 1rem 1rem;
   color: #333;
   font-size: 0.95rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;   /* Limite le texte à 4 lignes */
-  -webkit-box-orient: vertical;
   flex-grow: 1;
 }
 
@@ -152,16 +138,15 @@ header nav a:hover {
   display: inline-block;
   margin: 0.5rem 0 1rem;
   padding: 0.5rem 1rem;
-  background: #007BFF;
+  background: rgb(57, 156, 206);
   color: white;
   text-decoration: none;
   border-radius: 5px;
   transition: background 0.2s;
-  flex-shrink: 0;
 }
 
 .card a:hover {
-  background: #0056b3;
+  background: rgb(57, 156, 107);
 }
 
 /* BUTTON */
@@ -207,5 +192,9 @@ footer {
   .presentation {
     flex-direction: column;
     text-align: center;
+  }
+
+  .articles-container {
+    padding: 0 1rem;
   }
 }
