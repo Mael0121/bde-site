@@ -145,3 +145,33 @@ header nav a:hover {
     max-width: 90%;
   }
 }
+
+/* Footer */
+footer {
+  background: rgb(57, 57, 156);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Bouton "Voir plus d'articles" sur la page d'accueil */
+.btn-center {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  background: rgb(57, 156, 206);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: rgb(57, 156, 107);
+}
