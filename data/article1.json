@@ -1,6 +1,6 @@
 {
-  "titre": "Découverte de l’informatique",
-  "texte": "Un article qui retrace les grandes étapes de l’informatique moderne.",
-  "image": "images/cabrini.png",
-  "lien": "articles/article1.html"
+  "titre": "Recrutement au BDE",
+  "texte": "Le recrutement est lancé ! Dépêche-toi de finaliser ton inscription",
+  "image": "images/inscription.png",
+  "lien": "articles/recrutement.html"
 }
