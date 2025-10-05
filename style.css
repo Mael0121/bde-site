@@ -190,4 +190,53 @@ footer {
 
 .btn:hover {
   background: rgb(57, 156, 107);
+
+}
+
+/* PRESENTATION */
+.presentation {
+  padding: 3rem 2rem;
+  background: #ffffff;
+  border-left: 6px solid rgb(57, 156, 107);
+  margin: 2rem auto;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.presentation h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: rgb(57, 57, 156);
+  text-align: center;
+}
+
+.presentation h3 {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 0.5rem;
+  color: rgb(57, 156, 107);
+}
+
+.presentation p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #333;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .presentation {
+    padding: 2rem 1rem;
+    margin: 1rem;
+  }
+
+  .presentation h2 {
+    font-size: 1.6rem;
+  }
+
+  .presentation h3 {
+    font-size: 1.1rem;
+  }
 }
