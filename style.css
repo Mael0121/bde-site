@@ -5,6 +5,22 @@
   box-sizing: border-box;
 }
 
+/* S’assurer que html et body prennent toute la hauteur */
+html, body {
+  height: 100%;
+}
+
+/* Body devient une colonne flex pour pousser le footer */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main prend tout l’espace restant pour que le footer soit en bas */
+main {
+  flex: 1;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
