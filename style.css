@@ -44,37 +44,7 @@ header nav a:hover {
   opacity: 0.8;
 }
 
-/* SECTION PRESENTATION */
-.presentation {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 3rem 2rem;
-  gap: 2rem;
-}
-
-.presentation .text {
-  flex: 1 1 300px;
-}
-
-.presentation h1,
-.presentation h2 {
-  font-size: 2.2rem;
-  margin-bottom: 1rem;
-  color: rgb(57, 156, 107);
-}
-
-.presentation p {
-  margin-bottom: 1rem;
-}
-
-.presentation .illustration img {
-  max-width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* SECTION ARTICLES */
+/* ARTICLES */
 .articles {
   padding: 3rem 2rem;
   background: #fafafa;
@@ -89,28 +59,28 @@ header nav a:hover {
 
 /* Conteneur des cartes */
 .articles-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  /* cartes centrées */
   gap: 1.5rem;
-  margin: 2rem auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  max-width: 1200px;          /* largeur max du conteneur */
-  justify-content: center;     /* centre les cartes si peu nombreuses */
+  margin: 2rem 0;
+  padding: 0 2rem;
 }
 
 /* Cartes */
 .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;        /* largeur maximale */
+  width: 100%;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;           /* largeur max par carte */
-  margin: 0 auto;             /* centre la carte dans la grille */
+  padding-bottom: 1rem;    /* espace sous le contenu */
 }
 
 .card:hover {
@@ -118,12 +88,11 @@ header nav a:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* Images dans les cartes */
+/* Images */
 .card img {
   width: 100%;
-  height: 180px;              /* hauteur fixe */
-  object-fit: cover;          /* adapte l’image à la carte sans la déformer */
-  display: block;
+  height: 180px;          /* hauteur fixe */
+  object-fit: cover;      /* l'image s'adapte sans déformer */
   border-radius: 12px 12px 0 0;
 }
 
@@ -140,10 +109,10 @@ header nav a:hover {
   font-size: 0.95rem;
 }
 
-/* Bouton lire la suite */
+/* Bouton */
 .card a {
-  display: inline-block;
-  margin-top: 0.5rem;
+  display: inline-block;       /* largeur adaptée au texte */
+  margin: 1rem auto 0 auto;    /* centré et espace du contenu */
   padding: 0.5rem 1rem;
   background: rgb(57, 156, 206);
   color: white;
@@ -163,4 +132,16 @@ header nav a:hover {
   font-style: italic;
   text-align: center;
   margin: 2rem 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .articles-container {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .card {
+    max-width: 90%;
+  }
 }
