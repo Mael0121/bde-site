@@ -6,28 +6,36 @@
   <title>CabriniBook - BDE Fun</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Structure flex pour que le footer reste en bas */
-    body {
+    main {
+      flex: 1;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
-      margin: 0;
-    }
-
-    main {
-      flex: 1; /* prend tout l’espace restant */
-      display: flex;
       justify-content: center;
       align-items: center;
-      padding: 1rem;
+      padding: 3rem 2rem;
+      text-align: center;
     }
 
-    iframe {
-      width: 100%;
-      max-width: 960px; /* largeur maximale */
-      height: 100%;     /* prend toute la hauteur disponible */
-      max-height: calc(100vh - 120px); /* ajuste pour header + footer */
-      border: none;
+    main p {
+      max-width: 700px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .btn-form {
+      display: inline-block;
+      background-color: rgb(57, 156, 107);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-form:hover {
+      background-color: rgb(45, 125, 86);
     }
   </style>
 </head>
@@ -47,9 +55,15 @@
 
   <!-- Main -->
   <main>
-    <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=8LUKYgUotEiE6G6A0jBtyAjdwgBorD9No92tfn88XNpUNDNCQldTRjFTMTNKUlY3UjM3VkhMQ0tDQS4u&embed=true" 
-            allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
-    </iframe>
+    <p>
+      Le <strong>CabriniBook</strong> est un recueil de souvenirs de la vie au lycée. 
+      Pour participer, les élèves sont invités à remplir le formulaire afin de partager 
+      leurs photos et moments marquants, contribuant ainsi à créer un album collectif mémorable.
+    </p>
+
+    <a href="https://forms.office.com/e/tFVKzkhGEg" target="_blank" class="btn-form">
+      Remplir le formulaire
+    </a>
   </main>
 
   <!-- Footer -->
