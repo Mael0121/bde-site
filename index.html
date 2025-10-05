@@ -3,76 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liste des articles</title>
+  <title>Accueil BDE Fun</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header -->
   <header>
-    <h1>Mon site d’articles</h1>
+    <h1>BDE Fun</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="#">Événements</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main id="articles-container">
-    <p>Chargement des articles...</p>
+  <!-- Section principale -->
+  <main>
+    <!-- Présentation -->
+    <section class="presentation">
+      <h2>Bienvenue au BDE 🎉</h2>
+      <p>
+        Ici, tu trouveras toutes les infos sur nos projets, nos événements, et
+        les dernières nouvelles de ton BDE préféré !
+      </p>
+    </section>
+
+    <!-- Articles récents -->
+    <section class="articles">
+      <h2>Derniers Articles</h2>
+      <div id="articles-container" class="articles-container">
+        <p>Chargement des articles...</p>
+      </div>
+      <div class="button-container">
+        <a href="articles.html" class="btn">Voir plus d’articles</a>
+      </div>
+    </section>
   </main>
 
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 - BDE Fun. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Script pour charger les 3 derniers articles -->
   <script>
-    async function chargerArticles() {
+    async function chargerArticlesRecents() {
+      const container = document.getElementById("articles-container");
+      container.innerHTML = "<p>Chargement des articles...</p>";
+
       try {
-        // Charger la liste des chemins d'articles
         const res = await fetch("liste_article.json");
         const data = await res.json();
 
-        const container = document.getElementById("articles-container");
-        container.innerHTML = ""; // Nettoyer le "chargement..."
+        container.innerHTML = "";
 
         if (!data.articles || data.articles.length === 0) {
-          container.innerHTML = "<p>Aucun article disponible</p>";
+          container.innerHTML = "<p class='no-article'>Aucun article disponible</p>";
           return;
         }
 
-        // Charger chaque fichier article.json
+        // Charger tous les articles
+        const articlesWithData = [];
         for (const chemin of data.articles) {
           try {
             const resArticle = await fetch(chemin);
             const article = await resArticle.json();
-
-            // Créer la carte
-            const card = document.createElement("div");
-            card.classList.add("card");
-
-            if (article.image) {
-              const img = document.createElement("img");
-              img.src = article.image;
-              img.alt = article.titre;
-              card.appendChild(img);
-            }
-
-            const title = document.createElement("h2");
-            title.textContent = article.titre;
-            card.appendChild(title);
-
-            const text = document.createElement("p");
-            text.textContent = article.texte;
-            card.appendChild(text);
-
-            const link = document.createElement("a");
-            link.href = article.lien;
-            link.textContent = "Lire la suite";
-            card.appendChild(link);
-
-            container.appendChild(card);
+            articlesWithData.push(article);
           } catch (err) {
             console.error("Erreur chargement article:", chemin, err);
           }
         }
+
+        // Trier par date décroissante
+        articlesWithData.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        // Garder uniquement les 3 derniers articles
+        const derniersArticles = articlesWithData.slice(0, 3);
+
+        // Créer les cartes
+        for (const article of derniersArticles) {
+          const card = document.createElement("div");
+          card.classList.add("card");
+
+          if (article.image) {
+            const img = document.createElement("img");
+            img.src = article.image;
+            img.alt = article.titre;
+            card.appendChild(img);
+          }
+
+          const title = document.createElement("h3");
+          title.textContent = article.titre;
+          card.appendChild(title);
+
+          const text = document.createElement("p");
+          text.textContent = article.texte;
+          card.appendChild(text);
+
+          const link = document.createElement("a");
+          link.href = article.lien;
+          link.textContent = "Lire la suite";
+          card.appendChild(link);
+
+          container.appendChild(card);
+        }
+
       } catch (err) {
-        document.getElementById("articles-container").innerHTML =
-          "<p>Impossible de charger les articles</p>";
+        container.innerHTML = "<p class='no-article'>Impossible de charger les articles</p>";
         console.error(err);
       }
     }
 
-    chargerArticles();
+    chargerArticlesRecents();
   </script>
 </body>
 </html>
