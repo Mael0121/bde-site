@@ -6,27 +6,28 @@
   <title>CabriniBook - BDE Fun</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    main {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-    }
-
-    iframe {
-      border: none;
-      width: 100%;
-      max-width: 640px;
-      height: 480px;
-      max-height: 100vh;
-    }
-
-    /* s'assure que le footer reste en bas */
+    /* Structure flex pour que le footer reste en bas */
     body {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      margin: 0;
+    }
+
+    main {
+      flex: 1; /* prend tout l’espace restant */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 960px; /* largeur maximale */
+      height: 100%;     /* prend toute la hauteur disponible */
+      max-height: calc(100vh - 120px); /* ajuste pour header + footer */
+      border: none;
     }
   </style>
 </head>
@@ -38,7 +39,7 @@
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="articles.html">Articles</a></li>
-        <li><a href="cabrinibook.html">Cabrinibook</a></li>
+        <li><a href="#">Événements</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
     </nav>
